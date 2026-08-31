@@ -5,68 +5,526 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sabor Local — Cocina de Casa — Demo</title>
 <style>
-  :root { --bg:#fdf6ec; --panel:#ffffff; --primary:#c1440e; --primary2:#e8875a; --dark:#2e2018; --muted:#7a6a5a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  html { scroll-behavior:smooth; }
-  body { font-family:'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--dark); line-height:1.7; }
-  .demo-banner { background:var(--dark); color:#fdf6ec; text-align:center; padding:10px; font-size:0.82rem; font-weight:700; position:sticky; top:0; z-index:50; }
-  nav { display:flex; justify-content:space-between; align-items:center; padding:22px 6%; background:var(--panel); }
-  nav .brand { font-size:1.4rem; font-weight:800; color:var(--primary); }
-  nav .links { display:flex; gap:26px; font-size:0.88rem; }
-  nav .links a { color:var(--muted); text-decoration:none; font-weight:600; }
-  header.hero { text-align:center; padding:90px 20px; background:linear-gradient(135deg,var(--primary),var(--primary2)); color:white; position:relative; }
-  header.hero .kicker { font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; opacity:0.85; margin-bottom:14px; }
-  header.hero h1 { font-size:2.8rem; margin-bottom:16px; }
-  header.hero p { max-width:480px; margin:0 auto; opacity:0.95; font-size:1.05rem; }
-  .cta-row { display:flex; gap:14px; justify-content:center; margin-top:32px; flex-wrap:wrap; }
-  .cta { display:inline-block; background:white; color:var(--primary); padding:15px 32px; border-radius:30px; text-decoration:none; font-weight:700; }
-  .cta.outline { background:transparent; color:white; border:2px solid white; }
-  section { max-width:1000px; margin:0 auto; padding:80px 24px; }
-  .eyebrow { color:var(--primary); font-weight:700; letter-spacing:1px; text-align:center; font-size:0.85rem; text-transform:uppercase; margin-bottom:10px; }
-  h2 { color:var(--dark); font-size:2rem; text-align:center; margin-bottom:44px; }
-  .story { display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
-  .story .frame { aspect-ratio:4/3; background:linear-gradient(145deg,#f3d9b8,#e8875a); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:3.6rem; }
-  .story p { color:var(--muted); margin-bottom:14px; }
-  .menu-cat { margin-bottom:50px; }
-  .menu-cat h3 { color:var(--primary); font-size:1.2rem; margin-bottom:20px; border-bottom:2px solid #f0d9c4; padding-bottom:10px; }
-  .menu-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
-  .dish { background:var(--panel); border-radius:12px; padding:20px; box-shadow:0 4px 14px rgba(0,0,0,0.06); display:flex; gap:14px; align-items:flex-start; }
-  .dish .emoji { font-size:1.8rem; }
-  .dish h4 { margin-bottom:4px; }
-  .dish p { color:var(--muted); font-size:0.88rem; }
-  .dish .price { color:var(--primary); font-weight:700; margin-top:6px; font-size:0.95rem; }
-  .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .gallery .shot { aspect-ratio:1; border-radius:12px; background:linear-gradient(160deg,#f3d9b8,#e8875a); display:flex; align-items:center; justify-content:center; font-size:2rem; }
-  .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
-  .testimonial { background:var(--panel); padding:26px; border-radius:12px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
-  .testimonial .stars { color:var(--primary2); margin-bottom:10px; }
-  .testimonial p { color:var(--muted); font-style:italic; margin-bottom:12px; }
-  .testimonial .author { font-weight:700; font-size:0.85rem; }
-  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-  .info-card { background:var(--panel); border-radius:12px; padding:30px; text-align:center; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
-  .info-card .icon { font-size:1.8rem; margin-bottom:12px; }
-  .info-card p { color:var(--muted); margin:4px 0; font-size:0.92rem; }
-  footer { text-align:center; padding:50px 20px; background:var(--dark); color:#fdf6ec; }
-  footer p { font-size:0.85rem; margin-bottom:8px; opacity:0.85; }
-  footer a { color:var(--primary2); text-decoration:none; }
-  @media (max-width:700px){ .story,.info-grid{grid-template-columns:1fr;} .gallery{grid-template-columns:repeat(2,1fr);} header.hero h1{font-size:2.1rem;} }
+  :root {
+    --bg: #fff7f1;
+    --panel: #fffdfb;
+    --panel-soft: #fff0e5;
+    --primary: #d9531e;
+    --primary-strong: #b53d14;
+    --primary-2: #f0b25b;
+    --secondary: #2f1c14;
+    --muted: #6d5648;
+    --line: rgba(47, 28, 20, 0.12);
+    --shadow: 0 26px 60px rgba(47, 28, 20, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(180deg, #fff9f5 0%, #fff0e4 100%);
+    color: var(--secondary);
+    line-height: 1.7;
+  }
+
+  .demo-banner {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: linear-gradient(90deg, #2c1a12, #4f2d1d);
+    color: #fffaf6;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  nav {
+    position: sticky;
+    top: 42px;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 6%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav .brand {
+    font-size: 1.53rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+  }
+
+  nav .links {
+    display: flex;
+    gap: 28px;
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  nav .links a {
+    color: var(--secondary);
+    text-decoration: none;
+  }
+
+  header.hero {
+    padding: 88px 20px 80px;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.24), transparent 22%),
+      linear-gradient(135deg, #321d14 0%, #bf4a1d 35%, #ef9e54 100%);
+    color: white;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .hero-copy { position: relative; z-index: 1; }
+
+  .kicker {
+    font-size: 0.8rem;
+    letter-spacing: 0.24rem;
+    text-transform: uppercase;
+    opacity: 0.95;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.7rem, 4vw, 4.3rem);
+    line-height: 0.96;
+    margin-bottom: 18px;
+    letter-spacing: -0.06em;
+  }
+
+  .hero-copy p {
+    max-width: 540px;
+    font-size: 1.08rem;
+    opacity: 0.96;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    padding: 18px 30px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: 900;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cta:hover { transform: translateY(-2px); }
+
+  .cta.primary {
+    background: linear-gradient(135deg, #fff4e8, #ffe0b7);
+    color: var(--secondary);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.16);
+  }
+
+  .cta.secondary {
+    background: transparent;
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.7);
+  }
+
+  .sticky-cta {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: min(86vw, 320px);
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #fff4e8, #ffd6a5);
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 900;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: transform 0.18s ease;
+  }
+
+  .hero-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 24px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+  }
+
+  .mini-dish {
+    background: #fffaf5;
+    border-radius: 18px;
+    padding: 18px;
+    color: var(--secondary);
+  }
+
+  .mini-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .mini-badge {
+    background: #ffe9d7;
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 7px 10px;
+    border-radius: 999px;
+  }
+
+  .mini-dish h3 {
+    font-size: 1.45rem;
+    margin-bottom: 8px;
+  }
+
+  .mini-dish p {
+    color: var(--muted);
+    font-size: 0.93rem;
+  }
+
+  .mini-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .mini-tags span {
+    background: var(--panel-soft);
+    color: var(--secondary);
+    border: 1px solid rgba(217,83,30,0.12);
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 7px 10px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .hero-stats .stat {
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .hero-stats strong {
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 94px 24px;
+  }
+
+  .eyebrow {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.22rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-bottom: 46px;
+    letter-spacing: -0.05em;
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 38px;
+    align-items: center;
+  }
+
+  .story-visual {
+    aspect-ratio: 4 / 3;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #f9d4ad, #e47f4f 60%, #d94d1f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .story-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .story-card p {
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .feature-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .feature-pills span {
+    background: var(--panel-soft);
+    border: 1px solid rgba(217,83,30,0.12);
+    color: var(--secondary);
+    font-size: 0.76rem;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 8px 12px;
+  }
+
+  .menu-cat { margin-bottom: 28px; }
+
+  .menu-cat h3 {
+    color: var(--primary);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid rgba(217,83,30,0.14);
+    font-size: 1.2rem;
+  }
+
+  .menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+  }
+
+  .dish {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #fffdfb 0%, #fff3ea 100%);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 22px rgba(47,28,20,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .dish:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 34px rgba(47,28,20,0.1);
+  }
+
+  .dish-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    background: #f6e2cf;
+  }
+
+  .dish-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 18px 20px;
+  }
+
+  .dish-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .dish-header h4 {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    line-height: 1.2;
+  }
+
+  .dish-price {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  .dish-body p {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .dish .tag {
+    align-self: flex-start;
+    background: #ffe8d4;
+    color: var(--primary-strong);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 6px 10px;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .gallery .shot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #f7d8b3, #e88459);
+    font-size: 2.5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .gallery .shot:nth-child(2n) { background: linear-gradient(135deg, #f3b476, #d76139); }
+  .gallery .shot:nth-child(3n) { background: linear-gradient(135deg, #f5dabc, #efc670); }
+  .gallery .shot:nth-child(4n) { background: linear-gradient(135deg, #f7d7af, #d75a2a); }
+
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .testimonial {
+    background: linear-gradient(180deg, #fffefc, #fff4ee);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 12px 20px rgba(47,28,20,0.04);
+  }
+
+  .stars { color: #f0b25b; margin-bottom: 12px; }
+  .testimonial p { color: var(--muted); font-style: italic; margin-bottom: 14px; }
+  .testimonial .author { font-weight: 800; color: var(--secondary); }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .info-card {
+    background: linear-gradient(180deg, #fffaf6, #fff1e7);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 12px 22px rgba(47,28,20,0.04);
+  }
+
+  .info-card .icon { font-size: 2rem; margin-bottom: 10px; }
+  .info-card p { color: var(--muted); margin: 4px 0; font-size: 0.92rem; }
+
+  footer {
+    text-align: center;
+    padding: 52px 20px 70px;
+    background: linear-gradient(180deg, #2f1d15, #1b120e);
+    color: #fcf9f7;
+  }
+
+  footer p { opacity: 0.84; font-size: 0.85rem; }
+  footer a { color: #f7bd7b; text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .hero-inner,
+    .story,
+    .info-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 680px) {
+    nav { top: 0; }
+    nav .links { display: none; }
+    .hero-copy h1 { font-size: 2.7rem; }
+    .gallery { grid-template-columns: 1fr; }
+    .dish-image { height: 220px; }
+  }
 </style>
 </head>
 <body>
   <div class="demo-banner">🎨 Página de ejemplo (demo) creada por Danketic — no es un negocio real</div>
 
   <nav>
-    <div class="brand">Sabor Local</div>
-    <div class="links"><a href="#menu">Menú</a><a href="#galeria">Galería</a><a href="#reservas">Reservas</a></div>
+    <div class="brand">SABOR LOCAL</div>
+    <div class="links">
+      <a href="#menu">Menú</a>
+      <a href="#galeria">Galería</a>
+      <a href="#reservas">Reservas</a>
+    </div>
   </nav>
 
   <header class="hero">
-    <p class="kicker">Cocina de casa desde 2018</p>
-    <h1>Comida con sabor a hogar</h1>
-    <p>Ingredientes frescos, recetas familiares y ese toque casero que se siente en cada plato.</p>
-    <div class="cta-row">
-      <a class="cta" href="https://wa.me/573028051687?text=Hola%2C%20vi%20la%20demo%20de%20restaurante%20y%20quiero%20una%20p%C3%A1gina%20as%C3%AD" target="_blank" rel="noreferrer">Reservar mesa</a>
-      <a class="cta outline" href="#menu">Ver menú</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="kicker">Cocina de casa desde 2018</p>
+        <h1>El sabor que<br>te hace volver</h1>
+        <p>Ingredientes frescos, recetas familiares y ese toque casero que se siente en cada plato. Un restaurante moderno con identidad, calor y sabor auténtico.</p>
+        <div class="cta-row">
+          <a class="cta primary" href="https://wa.me/573028051687?text=Hola%2C%20me%20interesa%20este%20proyecto%20de%20restaurante%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Me interesa este proyecto</a>
+          <a class="cta secondary" href="../index.html#contacto">Solicitar cotización</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mini-dish">
+          <div class="mini-top">
+            <span class="mini-badge">Especial del día</span>
+            <span>⭐ 4.9</span>
+          </div>
+          <h3>Filete con salsa de la casa</h3>
+          <p>Carne premium, papa cremosa, vegetales asados y sabor intenso.</p>
+          <div class="mini-tags">
+            <span>Fresco</span>
+            <span>Casero</span>
+            <span>Premium</span>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><strong>12k+</strong><span>Clientes</span></div>
+          <div class="stat"><strong>4.9</strong><span>Rating</span></div>
+          <div class="stat"><strong>2h</strong><span>Entrega</span></div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -74,10 +532,15 @@
     <p class="eyebrow">Nuestra historia</p>
     <h2>Desde nuestra cocina a tu mesa</h2>
     <div class="story">
-      <div class="frame">🍲</div>
-      <div>
+      <div class="story-visual">🍲</div>
+      <div class="story-card">
         <p>Sabor Local nació de la cocina de la abuela: recetas transmitidas de generación en generación, hechas con ingredientes locales y mucho cariño.</p>
-        <p>Hoy seguimos cocinando igual que siempre — despacio, con calidad y pensando en quien se sienta a comer.</p>
+        <p>Hoy seguimos cocinando igual que siempre, pero con un estilo más moderno y un ambiente pensado para crear momentos memorables.</p>
+        <div class="feature-pills">
+          <span>Ingredientes locales</span>
+          <span>Receta casera</span>
+          <span>Ambiente acogedor</span>
+        </div>
       </div>
     </div>
   </section>
@@ -85,24 +548,115 @@
   <section id="menu">
     <p class="eyebrow">Nuestra carta</p>
     <h2>Menú destacado</h2>
+
     <div class="menu-cat">
       <h3>Entradas</h3>
       <div class="menu-items">
-        <div class="dish"><div class="emoji">🥟</div><div><h4>Empanadas caseras</h4><p>Con ají de la casa.</p><div class="price">$8.000</div></div></div>
-        <div class="dish"><div class="emoji">🥗</div><div><h4>Ensalada de la casa</h4><p>Fresca, ligera, ideal para acompañar.</p><div class="price">$16.000</div></div></div>
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=900&q=80" alt="Empanadas caseras" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Empanadas caseras</h4>
+              <span class="dish-price">$8.000</span>
+            </div>
+            <span class="tag">Popular</span>
+            <p>Con ají de la casa y queso recién gratinado para un sabor intenso y auténtico.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=80" alt="Ensalada de la casa" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Ensalada de la casa</h4>
+              <span class="dish-price">$16.000</span>
+            </div>
+            <span class="tag">Fresca</span>
+            <p>Mix de hojas verdes, tomate, aguacate y aderezo casero con equilibrio perfecto.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80" alt="Tequeños dorados" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Tequeños dorados</h4>
+              <span class="dish-price">$12.000</span>
+            </div>
+            <span class="tag">Crujiente</span>
+            <p>Crujientes por fuera, suaves por dentro, ideales para compartir en cualquier mesa.</p>
+          </div>
+        </article>
       </div>
     </div>
+
     <div class="menu-cat">
       <h3>Fuertes</h3>
       <div class="menu-items">
-        <div class="dish"><div class="emoji">🍛</div><div><h4>Bandeja paisa</h4><p>El clásico completo, para compartir.</p><div class="price">$28.000</div></div></div>
-        <div class="dish"><div class="emoji">🐟</div><div><h4>Pescado frito</h4><p>Con patacón, arroz de coco y ensalada.</p><div class="price">$32.000</div></div></div>
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" alt="Bandeja paisa" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Bandeja paisa</h4>
+              <span class="dish-price">$28.000</span>
+            </div>
+            <span class="tag">Clásico</span>
+            <p>El gran clásico colombiano, completo, sabroso y pensado para compartir con orgullo.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80" alt="Pescado frito" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Pescado frito</h4>
+              <span class="dish-price">$32.000</span>
+            </div>
+            <span class="tag">Chef</span>
+            <p>Con patacón, arroz de coco y una ensalada fresca que realza cada bocado.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80" alt="Filete premium" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Filete premium</h4>
+              <span class="dish-price">$39.000</span>
+            </div>
+            <span class="tag">Premium</span>
+            <p>Carne jugosa con salsa de la casa, papa cremosa y vegetales asados al punto.</p>
+          </div>
+        </article>
       </div>
     </div>
+
     <div class="menu-cat">
       <h3>Postres</h3>
       <div class="menu-items">
-        <div class="dish"><div class="emoji">🍮</div><div><h4>Flan casero</h4><p>Receta de la abuela, no puede faltar.</p><div class="price">$9.000</div></div></div>
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80" alt="Flan casero" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Flan casero</h4>
+              <span class="dish-price">$9.000</span>
+            </div>
+            <span class="tag">Casero</span>
+            <p>Receta tradicional con caramelo artesanal y textura suave que termina perfecto.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <img class="dish-image" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" alt="Torta de chocolate" />
+          <div class="dish-body">
+            <div class="dish-header">
+              <h4>Torta de chocolate</h4>
+              <span class="dish-price">$11.000</span>
+            </div>
+            <span class="tag">Chocolate</span>
+            <p>Suave, cremosa y con un toque intenso que encanta a quienes aman lo dulce.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -111,7 +665,10 @@
     <p class="eyebrow">Galería</p>
     <h2>Un vistazo a nuestros platos</h2>
     <div class="gallery">
-      <div class="shot">🍛</div><div class="shot">🍲</div><div class="shot">🥘</div><div class="shot">🍮</div>
+      <div class="shot">🍛</div>
+      <div class="shot">🍲</div>
+      <div class="shot">🥘</div>
+      <div class="shot">🍮</div>
     </div>
   </section>
 
@@ -119,8 +676,21 @@
     <p class="eyebrow">Reseñas</p>
     <h2>Lo que dicen nuestros clientes</h2>
     <div class="testimonials">
-      <div class="testimonial"><div class="stars">★★★★★</div><p>"Se siente como comer en casa de la abuela. Espectacular."</p><div class="author">María F.</div></div>
-      <div class="testimonial"><div class="stars">★★★★★</div><p>"El mejor pescado frito de la zona, sin duda."</p><div class="author">Jorge L.</div></div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>“Se siente como comer en casa de la abuela. Todo muy bien servido y con sabor increíble.”</p>
+        <div class="author">María F.</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>“La mejor experiencia gastronómica del barrio. El ambiente, la comida y la atención son excelentes.”</p>
+        <div class="author">Jorge L.</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>“El pescado frito es espectacular y el servicio muy amable. Volveremos sin duda.”</p>
+        <div class="author">Paula R.</div>
+      </div>
     </div>
   </section>
 
@@ -128,10 +698,32 @@
     <p class="eyebrow">Visítanos</p>
     <h2>Horarios y reservas</h2>
     <div class="info-grid">
-      <div class="info-card"><div class="icon">🕒</div><p>Martes a Domingo: 11:00 AM – 9:00 PM</p><p>Lunes: Cerrado</p></div>
-      <div class="info-card"><div class="icon">📍</div><p>Carrera 8 #22-14</p><p>Bogotá, Colombia</p></div>
+      <div class="info-card">
+        <div class="icon">🕒</div>
+        <p>Martes a Domingo: 11:00 AM – 9:00 PM</p>
+        <p>Lunes: Cerrado</p>
+      </div>
+      <div class="info-card">
+        <div class="icon">📍</div>
+        <p>Carrera 8 #22-14</p>
+        <p>Bogotá, Colombia</p>
+      </div>
     </div>
   </section>
+
+  <a class="sticky-cta" href="https://wa.me/573028051687?text=Hola%2C%20me%20interesa%20este%20proyecto%20de%20restaurante%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Me interesa este proyecto</a>
+
+  <script>
+    const restauranteStickyCta = document.querySelector('.sticky-cta');
+    if (restauranteStickyCta) {
+      const updateStickyCta = () => {
+        const offset = Math.min(window.scrollY * 0.18, 72);
+        restauranteStickyCta.style.transform = `translateY(-${offset}px)`;
+      };
+      updateStickyCta();
+      window.addEventListener('scroll', updateStickyCta, { passive: true });
+    }
+  </script>
 
   <footer>
     <p>Demo creada por <a href="../index.html">Danketic</a> — así de rápido puede verse tu negocio online.</p>

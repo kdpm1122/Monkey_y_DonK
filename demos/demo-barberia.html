@@ -19,8 +19,28 @@
   header.hero h1 { font-size:3.2rem; letter-spacing:4px; color:var(--gold2); margin-bottom:20px; }
   header.hero p { color:var(--muted2); max-width:520px; margin:0 auto; font-size:1.08rem; }
   .cta-row { display:flex; gap:16px; justify-content:center; margin-top:36px; flex-wrap:wrap; }
-  .cta { display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#0f0d0b; padding:15px 32px; border-radius:2px; text-decoration:none; font-family:'Segoe UI',sans-serif; font-weight:700; letter-spacing:1px; font-size:0.9rem; }
+  .cta { display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#0f0d0b; padding:18px 34px; border-radius:12px; text-decoration:none; font-family:'Segoe UI',sans-serif; font-weight:800; letter-spacing:1px; font-size:1rem; min-height:56px; box-shadow:0 10px 24px rgba(212, 162, 76, 0.22); }
   .cta.outline { background:transparent; color:var(--gold2); border:1px solid var(--gold); }
+  .sticky-cta {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: min(86vw, 320px);
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f7d98b, #d4a24c);
+    color: #111111;
+    text-decoration: none;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 900;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.18s ease;
+  }
   section { max-width:1000px; margin:0 auto; padding:90px 24px; }
   .eyebrow { font-family:'Segoe UI',sans-serif; letter-spacing:3px; text-transform:uppercase; font-size:0.75rem; color:var(--gold); text-align:center; margin-bottom:12px; }
   h2 { color:var(--gold2); font-size:2rem; text-align:center; margin-bottom:50px; letter-spacing:1px; }
@@ -64,8 +84,8 @@
     <h1>EL ARTE DEL<br/>BUEN CORTE</h1>
     <p>Tradición, precisión y estilo. Una experiencia de barbería clásica pensada para el hombre moderno.</p>
     <div class="cta-row">
-      <a class="cta" href="https://wa.me/573028051687?text=Hola%2C%20vi%20la%20demo%20de%20barber%C3%ADa%20y%20quiero%20una%20p%C3%A1gina%20as%C3%AD" target="_blank" rel="noreferrer">Agendar cita</a>
-      <a class="cta outline" href="#servicios">Ver servicios</a>
+      <a class="cta" href="https://wa.me/573028051687?text=Hola%2C%20me%20interesa%20este%20proyecto%20de%20barber%C3%ADa%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Me interesa este proyecto</a>
+      <a class="cta outline" href="../index.html#contacto">Solicitar cotización</a>
     </div>
   </header>
 
@@ -120,6 +140,20 @@
       <div class="info-card"><div class="icon">📍</div><p>Calle 45 #12-30</p><p>Barrio Centro</p><p>Bogotá, Colombia</p></div>
     </div>
   </section>
+
+  <a class="sticky-cta" href="https://wa.me/573028051687?text=Hola%2C%20me%20interesa%20este%20proyecto%20de%20barber%C3%ADa%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Me interesa este proyecto</a>
+
+  <script>
+    const barberStickyCta = document.querySelector('.sticky-cta');
+    if (barberStickyCta) {
+      const updateStickyCta = () => {
+        const offset = Math.min(window.scrollY * 0.18, 72);
+        barberStickyCta.style.transform = `translateY(-${offset}px)`;
+      };
+      updateStickyCta();
+      window.addEventListener('scroll', updateStickyCta, { passive: true });
+    }
+  </script>
 
   <footer>
     <p>Demo creada por <a href="../index.html">Danketic</a> — así de rápido puede verse tu negocio online.</p>

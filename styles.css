@@ -859,9 +859,10 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 150px;
-  height: 54px;
-  padding: 0 20px;
+  gap: 10px;
+  min-width: 180px;
+  height: 62px;
+  padding: 0 22px;
   border-radius: 999px;
   background: linear-gradient(135deg, #1fd56f 0%, #17b85d 50%, #0f9d4e 100%);
   box-shadow: 0 16px 32px rgba(23, 177, 93, 0.28), inset 0 2px 10px rgba(255,255,255,0.2);
@@ -880,12 +881,20 @@ button {
 
 .whatsapp-label {
   color: #ffffff;
-  font-size: 0.96rem;
+  font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1;
   text-transform: none;
   text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.whatsapp-float img {
+  width: 26px;
+  height: 26px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
 }
 
 .whatsapp-float svg {
@@ -959,9 +968,19 @@ button {
 }
 
 .btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   color: white;
   background: #25D366;
   box-shadow: 0 8px 18px rgba(37, 211, 102, 0.28);
+}
+
+.btn-whatsapp img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .btn-lg {
