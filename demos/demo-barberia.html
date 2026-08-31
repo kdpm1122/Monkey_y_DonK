@@ -25,7 +25,8 @@
   .eyebrow { font-family:'Segoe UI',sans-serif; letter-spacing:3px; text-transform:uppercase; font-size:0.75rem; color:var(--gold); text-align:center; margin-bottom:12px; }
   h2 { color:var(--gold2); font-size:2rem; text-align:center; margin-bottom:50px; letter-spacing:1px; }
   .story { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
-  .story .frame { aspect-ratio:4/5; background:linear-gradient(145deg,#241d16,#0f0d0b); border:1px solid #332a22; display:flex; align-items:center; justify-content:center; font-size:4rem; }
+  .story .frame { aspect-ratio:4/5; background:linear-gradient(145deg,#241d16,#0f0d0b); border:1px solid #332a22; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .story .frame img { width:100%; height:100%; object-fit:cover; display:block; }
   .story p { color:var(--muted2); margin-bottom:16px; }
   .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px; background:#2a231c; }
   .service-row { background:var(--panel); padding:32px 28px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
@@ -33,7 +34,9 @@
   .service-row .desc { font-family:'Segoe UI',sans-serif; font-size:0.85rem; color:var(--muted2); }
   .service-row .price { color:var(--gold2); font-family:'Segoe UI',sans-serif; font-weight:700; white-space:nowrap; font-size:1.05rem; }
   .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .gallery .shot { aspect-ratio:1; background:linear-gradient(160deg,#241d16,#171310); display:flex; align-items:center; justify-content:center; font-size:2rem; border:1px solid #2a231c; }
+  .gallery .shot { aspect-ratio:1; background:linear-gradient(160deg,#241d16,#171310); display:flex; align-items:center; justify-content:center; border:1px solid #2a231c; overflow:hidden; }
+  .gallery .shot img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .gallery .shot:hover img { transform:scale(1.06); }
   .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px; }
   .testimonial { background:var(--panel2); padding:30px; border-left:2px solid var(--gold); }
   .testimonial p { font-style:italic; color:var(--muted2); margin-bottom:14px; }
@@ -70,7 +73,7 @@
     <p class="eyebrow">Nuestra historia</p>
     <h2>Más que un corte</h2>
     <div class="story">
-      <div class="frame">💈</div>
+      <div class="frame"><img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&amp;fit=crop&amp;w=800&amp;h=1000&amp;q=80" alt="Silla de barbero clásica en cuero, el interior de El Corte" loading="lazy"></div>
       <div>
         <p>Desde 2015, El Corte se ha dedicado a preservar el arte de la barbería clásica, combinando técnicas tradicionales con las tendencias actuales.</p>
         <p>Cada visita es una experiencia: silla de cuero, toalla caliente y la atención de barberos que dominan su oficio.</p>
@@ -93,7 +96,10 @@
     <p class="eyebrow">Galería</p>
     <h2>Nuestro trabajo</h2>
     <div class="gallery">
-      <div class="shot">✂️</div><div class="shot">💈</div><div class="shot">🪒</div><div class="shot">✨</div>
+      <div class="shot"><img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Corte de cabello en proceso" loading="lazy"></div>
+      <div class="shot"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Herramientas clásicas de barbería" loading="lazy"></div>
+      <div class="shot"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Afeitado clásico a navaja" loading="lazy"></div>
+      <div class="shot"><img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Detalle de acabado y peinado final" loading="lazy"></div>
     </div>
   </section>
 
