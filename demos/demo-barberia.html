@@ -4,88 +4,103 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>El Corte — Barbería Premium — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0f0d0b; --panel:#1c1713; --panel2:#171310; --gold:#d4a24c; --gold2:#f0c877; --text:#f5efe6; --muted2:#b8a894; }
+  :root { --bg:#0b0a09; --panel:#1c1713; --panel2:#171310; --gold:#c9a04e; --gold2:#f0cf8e; --text:#f5efe6; --muted2:#b3a591; --line:rgba(201,160,78,0.22); }
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
-  body { font-family:'Georgia','Times New Roman',serif; background:var(--bg); color:var(--text); line-height:1.7; }
-  .demo-banner { background:var(--gold); color:#0f0d0b; text-align:center; padding:10px; font-family:'Segoe UI',sans-serif; font-size:0.82rem; font-weight:700; position:sticky; top:0; z-index:50; }
-  nav { display:flex; justify-content:space-between; align-items:center; padding:24px 6%; border-bottom:1px solid #2a231c; }
-  nav .brand { font-size:1.3rem; letter-spacing:3px; color:var(--gold2); font-weight:700; }
-  nav .links { display:flex; gap:28px; font-family:'Segoe UI',sans-serif; font-size:0.82rem; letter-spacing:1px; }
-  nav .links a { color:var(--muted2); text-decoration:none; }
-  header.hero { text-align:center; padding:100px 20px 90px; background:radial-gradient(circle at 50% 0%, #241d16 0%, #0f0d0b 70%); border-bottom:1px solid #2a231c; }
-  header.hero .kicker { font-family:'Segoe UI',sans-serif; letter-spacing:4px; text-transform:uppercase; font-size:0.78rem; color:var(--gold); margin-bottom:18px; }
-  header.hero h1 { font-size:3.2rem; letter-spacing:4px; color:var(--gold2); margin-bottom:20px; }
-  header.hero p { color:var(--muted2); max-width:520px; margin:0 auto; font-size:1.08rem; }
-  .cta-row { display:flex; gap:16px; justify-content:center; margin-top:36px; flex-wrap:wrap; }
-  .cta { display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#0f0d0b; padding:18px 34px; border-radius:12px; text-decoration:none; font-family:'Segoe UI',sans-serif; font-weight:800; letter-spacing:1px; font-size:1rem; min-height:56px; box-shadow:0 10px 24px rgba(212, 162, 76, 0.22); }
-  .cta.outline { background:transparent; color:var(--gold2); border:1px solid var(--gold); }
-  .sticky-cta {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 100;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    max-width: min(86vw, 320px);
-    padding: 14px 18px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #f7d98b, #d4a24c);
-    color: #111111;
-    text-decoration: none;
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 900;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.22);
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: transform 0.18s ease;
-  }
-  section { max-width:1000px; margin:0 auto; padding:90px 24px; }
-  .eyebrow { font-family:'Segoe UI',sans-serif; letter-spacing:3px; text-transform:uppercase; font-size:0.75rem; color:var(--gold); text-align:center; margin-bottom:12px; }
-  h2 { color:var(--gold2); font-size:2rem; text-align:center; margin-bottom:50px; letter-spacing:1px; }
-  .story { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
-  .story .frame { aspect-ratio:4/5; background:linear-gradient(145deg,#241d16,#0f0d0b); border:1px solid #332a22; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  body { font-family:'Jost',Arial,sans-serif; font-weight:300; background:var(--bg); color:var(--text); line-height:1.75; }
+  .demo-banner { background:var(--gold); color:#0b0a09; text-align:center; padding:10px; font-family:'Jost',sans-serif; font-size:0.8rem; font-weight:600; letter-spacing:0.5px; position:sticky; top:0; z-index:50; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:26px 6%; border-bottom:1px solid var(--line); }
+  nav .brand { display:flex; align-items:center; gap:13px; font-family:'Playfair Display',serif; font-size:1.3rem; letter-spacing:2.5px; color:var(--gold2); font-weight:600; }
+  .crest { width:34px; height:34px; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Jost',sans-serif; font-weight:500; font-size:0.68rem; letter-spacing:1px; color:var(--gold); flex-shrink:0; }
+  nav .links { display:flex; gap:34px; font-size:0.78rem; letter-spacing:1.5px; text-transform:uppercase; }
+  nav .links a { position:relative; color:var(--muted2); text-decoration:none; padding-bottom:6px; }
+  nav .links a::after { content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .35s ease; }
+  nav .links a:hover { color:var(--gold2); }
+  nav .links a:hover::after { width:100%; }
+  header.hero { position:relative; min-height:660px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; border-bottom:1px solid var(--line); }
+  header.hero .hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(0.35) brightness(0.4); }
+  header.hero .hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,10,9,0.55) 0%,rgba(11,10,9,0.75) 60%,rgba(11,10,9,0.95) 100%); }
+  header.hero .content { position:relative; z-index:2; padding:40px 20px; }
+  header.hero .kicker { letter-spacing:5px; text-transform:uppercase; font-size:0.76rem; color:var(--gold); margin-bottom:22px; }
+  header.hero h1 { font-family:'Playfair Display',serif; font-weight:600; font-size:3.4rem; letter-spacing:2px; color:var(--gold2); margin-bottom:22px; line-height:1.15; }
+  header.hero p { font-weight:300; color:var(--muted2); max-width:520px; margin:0 auto; font-size:1.05rem; }
+  .cta-row { display:flex; gap:18px; justify-content:center; margin-top:40px; flex-wrap:wrap; }
+  .cta { display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#0b0a09; padding:16px 38px; text-decoration:none; font-weight:500; letter-spacing:2px; font-size:0.76rem; text-transform:uppercase; }
+  .cta.outline { background:transparent; color:var(--gold2); border:1px solid rgba(201,160,78,0.5); }
+  .cta.outline:hover { border-color:var(--gold); background:rgba(201,160,78,0.06); }
+  .stats-strip { margin-top:46px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap; font-size:0.7rem; letter-spacing:2.5px; color:var(--muted2); text-transform:uppercase; }
+  .stats-strip .dot { color:var(--gold); }
+  section { max-width:1040px; margin:0 auto; padding:110px 24px; }
+  .eyebrow { letter-spacing:4px; text-transform:uppercase; font-size:0.74rem; color:var(--gold); text-align:center; margin-bottom:14px; }
+  h2 { font-family:'Playfair Display',serif; font-weight:600; color:var(--gold2); font-size:2.1rem; text-align:center; margin-bottom:54px; letter-spacing:0.5px; }
+  .story { display:grid; grid-template-columns:0.85fr 1fr; gap:60px; align-items:center; }
+  .story .frame { aspect-ratio:4/5; border:1px solid var(--line); overflow:hidden; }
   .story .frame img { width:100%; height:100%; object-fit:cover; display:block; }
-  .story p { color:var(--muted2); margin-bottom:16px; }
-  .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px; background:#2a231c; }
-  .service-row { background:var(--panel); padding:32px 28px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
-  .service-row .name { font-size:1.15rem; color:var(--text); margin-bottom:8px; }
-  .service-row .desc { font-family:'Segoe UI',sans-serif; font-size:0.85rem; color:var(--muted2); }
-  .service-row .price { color:var(--gold2); font-family:'Segoe UI',sans-serif; font-weight:700; white-space:nowrap; font-size:1.05rem; }
-  .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .gallery .shot { aspect-ratio:1; background:linear-gradient(160deg,#241d16,#171310); display:flex; align-items:center; justify-content:center; border:1px solid #2a231c; overflow:hidden; }
-  .gallery .shot img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
-  .gallery .shot:hover img { transform:scale(1.06); }
-  .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px; }
-  .testimonial { background:var(--panel2); padding:30px; border-left:2px solid var(--gold); }
-  .testimonial p { font-style:italic; color:var(--muted2); margin-bottom:14px; }
-  .testimonial .author { font-family:'Segoe UI',sans-serif; font-size:0.82rem; color:var(--gold2); }
-  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
-  .info-card { background:var(--panel2); padding:34px; text-align:center; }
-  .info-card .icon { font-size:1.8rem; margin-bottom:14px; }
-  .info-card p { color:var(--muted2); font-family:'Segoe UI',sans-serif; font-size:0.92rem; margin:4px 0; }
-  footer { text-align:center; padding:60px 20px; border-top:1px solid #2a231c; font-family:'Segoe UI',sans-serif; }
+  .story p { font-weight:300; color:var(--muted2); margin-bottom:18px; font-size:1rem; }
+  .story p:last-child { margin-bottom:0; }
+  .services-list { display:flex; flex-direction:column; border-top:1px solid var(--line); }
+  .service-row { display:grid; grid-template-columns:56px 1fr auto; align-items:baseline; gap:26px; padding:30px 6px; border-bottom:1px solid var(--line); transition:background .3s ease; }
+  .service-row:hover { background:rgba(201,160,78,0.045); }
+  .service-row .num { font-family:'Playfair Display',serif; font-style:italic; color:var(--gold); font-size:1.05rem; opacity:0.75; }
+  .service-row .name { font-family:'Playfair Display',serif; font-weight:600; font-size:1.3rem; color:var(--text); margin-bottom:8px; }
+  .service-row .desc { font-size:0.86rem; font-weight:300; color:var(--muted2); }
+  .service-row .price { font-weight:500; color:var(--gold2); white-space:nowrap; font-size:1.15rem; }
+  .gallery { display:grid; grid-template-columns:1.35fr 1fr; gap:18px; }
+  .gallery .col-right { display:flex; flex-direction:column; gap:18px; }
+  .shot { overflow:hidden; border:1px solid var(--line); }
+  .shot img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+  .shot:hover img { transform:scale(1.05); }
+  .shot.feature { aspect-ratio:3/4; }
+  .col-right .shot { aspect-ratio:16/10; flex:1; }
+  .testimonials { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:40px; }
+  .testimonial { text-align:center; padding:0 12px; }
+  .testimonial .quote-mark { font-family:'Playfair Display',serif; font-size:3.2rem; color:var(--gold); opacity:0.55; line-height:1; margin-bottom:8px; }
+  .testimonial .stars { color:var(--gold2); letter-spacing:3px; margin-bottom:16px; font-size:0.82rem; }
+  .testimonial p { font-family:'Playfair Display',serif; font-style:italic; font-weight:500; color:var(--text); font-size:1.08rem; margin-bottom:20px; }
+  .testimonial .author { font-size:0.74rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted2); }
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .info-card { border:1px solid var(--line); padding:42px 30px; text-align:center; }
+  .info-card svg { margin-bottom:18px; }
+  .info-card p { color:var(--muted2); font-weight:300; font-size:0.92rem; margin:5px 0; }
+  footer { text-align:center; padding:64px 20px; border-top:1px solid var(--line); }
   footer p { color:var(--muted2); font-size:0.85rem; margin-bottom:10px; }
   footer a { color:var(--gold2); text-decoration:none; }
-  @media (max-width:700px){ .story,.info-grid{grid-template-columns:1fr;} .gallery{grid-template-columns:repeat(2,1fr);} header.hero h1{font-size:2.1rem;} }
+  @media (max-width:700px){
+    .story,.info-grid{grid-template-columns:1fr;}
+    .story .frame{aspect-ratio:16/10;}
+    .gallery{grid-template-columns:1fr;}
+    .shot.feature{aspect-ratio:16/10;}
+    header.hero h1{font-size:2.2rem;}
+    section{padding:80px 20px;}
+  }
 </style>
 </head>
 <body>
   <div class="demo-banner">🎨 Página de ejemplo (demo) creada por Danketic — no es un negocio real</div>
 
   <nav>
-    <div class="brand">EL CORTE</div>
+    <div class="brand"><span class="crest">EC</span>EL CORTE</div>
     <div class="links"><a href="#servicios">Servicios</a><a href="#galeria">Galería</a><a href="#ubicacion">Ubicación</a></div>
   </nav>
 
   <header class="hero">
-    <p class="kicker">Barbería desde 2015</p>
-    <h1>EL ARTE DEL<br/>BUEN CORTE</h1>
-    <p>Tradición, precisión y estilo. Una experiencia de barbería clásica pensada para el hombre moderno.</p>
-    <div class="cta-row">
-      <a class="cta" href="https://wa.me/573028051687?text=Hola%2C%20me%20interesa%20este%20proyecto%20de%20barber%C3%ADa%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Me interesa este proyecto</a>
-      <a class="cta outline" href="../index.html#contacto">Solicitar cotización</a>
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&amp;fit=crop&amp;w=1600&amp;h=900&amp;q=70" alt="" />
+    <div class="hero-overlay"></div>
+    <div class="content">
+      <p class="kicker">Barbería desde 2015</p>
+      <h1>El arte del<br/>buen corte</h1>
+      <p>Tradición, precisión y estilo. Una experiencia de barbería clásica pensada para el hombre moderno.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://wa.me/573028051687?text=Hola%2C%20vi%20la%20demo%20de%20barber%C3%ADa%20y%20quiero%20una%20p%C3%A1gina%20as%C3%AD" target="_blank" rel="noreferrer">Agendar cita</a>
+        <a class="cta outline" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="stats-strip">
+        <span>10+ años de oficio</span><span class="dot">·</span><span>+12.000 cortes realizados</span><span class="dot">·</span><span>4.9★ en reseñas</span>
+      </div>
     </div>
   </header>
 
@@ -104,11 +119,11 @@
   <section id="servicios">
     <p class="eyebrow">Servicios</p>
     <h2>Nuestra carta</h2>
-    <div class="services-grid">
-      <div class="service-row"><div><div class="name">Corte clásico</div><div class="desc">Tijera y máquina, incluye lavado y peinado.</div></div><div class="price">$25.000</div></div>
-      <div class="service-row"><div><div class="name">Arreglo de barba</div><div class="desc">Perfilado, afeitado clásico y toalla caliente.</div></div><div class="price">$18.000</div></div>
-      <div class="service-row"><div><div class="name">Combo Signature</div><div class="desc">Corte + barba + tratamiento facial completo.</div></div><div class="price">$38.000</div></div>
-      <div class="service-row"><div><div class="name">Afeitado a navaja</div><div class="desc">El clásico ritual, espuma caliente y navaja.</div></div><div class="price">$22.000</div></div>
+    <div class="services-list">
+      <div class="service-row"><div class="num">I</div><div><div class="name">Corte clásico</div><div class="desc">Tijera y máquina, incluye lavado y peinado.</div></div><div class="price">$25.000</div></div>
+      <div class="service-row"><div class="num">II</div><div><div class="name">Arreglo de barba</div><div class="desc">Perfilado, afeitado clásico y toalla caliente.</div></div><div class="price">$18.000</div></div>
+      <div class="service-row"><div class="num">III</div><div><div class="name">Combo Signature</div><div class="desc">Corte + barba + tratamiento facial completo.</div></div><div class="price">$38.000</div></div>
+      <div class="service-row"><div class="num">IV</div><div><div class="name">Afeitado a navaja</div><div class="desc">El clásico ritual, espuma caliente y navaja.</div></div><div class="price">$22.000</div></div>
     </div>
   </section>
 
@@ -116,10 +131,12 @@
     <p class="eyebrow">Galería</p>
     <h2>Nuestro trabajo</h2>
     <div class="gallery">
-      <div class="shot"><img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Corte de cabello en proceso" loading="lazy"></div>
-      <div class="shot"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Herramientas clásicas de barbería" loading="lazy"></div>
-      <div class="shot"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Afeitado clásico a navaja" loading="lazy"></div>
-      <div class="shot"><img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&amp;fit=crop&amp;w=500&amp;h=500&amp;q=80" alt="Detalle de acabado y peinado final" loading="lazy"></div>
+      <div class="shot feature"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&amp;fit=crop&amp;w=800&amp;h=1000&amp;q=80" alt="Afeitado clásico a navaja" loading="lazy"></div>
+      <div class="col-right">
+        <div class="shot"><img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&amp;fit=crop&amp;w=700&amp;h=440&amp;q=80" alt="Corte de cabello en proceso" loading="lazy"></div>
+        <div class="shot"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&amp;fit=crop&amp;w=700&amp;h=440&amp;q=80" alt="Herramientas clásicas de barbería" loading="lazy"></div>
+        <div class="shot"><img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&amp;fit=crop&amp;w=700&amp;h=440&amp;q=80" alt="Detalle de acabado y peinado final" loading="lazy"></div>
+      </div>
     </div>
   </section>
 
@@ -127,8 +144,8 @@
     <p class="eyebrow">Testimonios</p>
     <h2>Lo que dicen de nosotros</h2>
     <div class="testimonials">
-      <div class="testimonial"><p>"El mejor corte que me han hecho en años. Ambiente y atención de otro nivel."</p><div class="author">— Carlos M.</div></div>
-      <div class="testimonial"><p>"Voy cada dos semanas, ya es parte de mi rutina. Totalmente recomendados."</p><div class="author">— Andrés R.</div></div>
+      <div class="testimonial"><div class="quote-mark">“</div><div class="stars">★★★★★</div><p>El mejor corte que me han hecho en años. Ambiente y atención de otro nivel.</p><div class="author">Carlos M.</div></div>
+      <div class="testimonial"><div class="quote-mark">“</div><div class="stars">★★★★★</div><p>Voy cada dos semanas, ya es parte de mi rutina. Totalmente recomendados.</p><div class="author">Andrés R.</div></div>
     </div>
   </section>
 
@@ -136,24 +153,16 @@
     <p class="eyebrow">Visítanos</p>
     <h2>Horarios y ubicación</h2>
     <div class="info-grid">
-      <div class="info-card"><div class="icon">🕒</div><p>Lunes a Viernes: 9:00 AM – 7:00 PM</p><p>Sábados: 9:00 AM – 5:00 PM</p><p>Domingos: Cerrado</p></div>
-      <div class="info-card"><div class="icon">📍</div><p>Calle 45 #12-30</p><p>Barrio Centro</p><p>Bogotá, Colombia</p></div>
+      <div class="info-card">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c9a04e" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <p>Lunes a Viernes: 9:00 AM – 7:00 PM</p><p>Sábados: 9:00 AM – 5:00 PM</p><p>Domingos: Cerrado</p>
+      </div>
+      <div class="info-card">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c9a04e" stroke-width="1.2"><path d="M12 21s7-6.8 7-12.3A7 7 0 1 0 5 8.7C5 14.2 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.4"/></svg>
+        <p>Calle 45 #12-30</p><p>Barrio Centro</p><p>Bogotá, Colombia</p>
+      </div>
     </div>
   </section>
-
-  <a class="sticky-cta" href="https://wa.me/573028051687?text=Hola%2C%20me%20interesa%20este%20proyecto%20de%20barber%C3%ADa%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noreferrer">Me interesa este proyecto</a>
-
-  <script>
-    const barberStickyCta = document.querySelector('.sticky-cta');
-    if (barberStickyCta) {
-      const updateStickyCta = () => {
-        const offset = Math.min(window.scrollY * 0.18, 72);
-        barberStickyCta.style.transform = `translateY(-${offset}px)`;
-      };
-      updateStickyCta();
-      window.addEventListener('scroll', updateStickyCta, { passive: true });
-    }
-  </script>
 
   <footer>
     <p>Demo creada por <a href="../index.html">Danketic</a> — así de rápido puede verse tu negocio online.</p>
