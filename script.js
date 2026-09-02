@@ -65,6 +65,8 @@ const translations = {
     'about.text': 'We are Danketic: a team focused on building web pages and software that help your business look professional and sell more. No unnecessary complications, no endless meetings — just clear work and on-time delivery.',
     'demos.eyebrow': 'Demos',
     'demos.title': 'See it before you ask for it',
+    'demos.subtitle': 'Barbershop, restaurant and store — 3 real examples you can explore right now.',
+    'demos.cta': 'See the 3 demos',
     'process.eyebrow': 'Process',
     'process.title': 'Clear, professional work focused on results',
     'process.step1.title': 'We talk',
@@ -166,6 +168,8 @@ const translations = {
     'about.text': 'Somos Danketic: un equipo enfocado en construir páginas web y software que ayudan a tu negocio a verse profesional y vender más. Sin complicaciones innecesarias, sin reuniones eternas — solo trabajo claro y entregas a tiempo.',
     'demos.eyebrow': 'Demos',
     'demos.title': 'Míralo antes de pedirlo',
+    'demos.subtitle': 'Barbería, restaurante y tienda — 3 ejemplos reales que puedes explorar ahora mismo.',
+    'demos.cta': 'Ver los 3 demos',
     'process.eyebrow': 'Proceso',
     'process.title': 'Trabajo claro, profesional y enfocado en resultados',
     'process.step1.title': 'Hablamos',
@@ -393,10 +397,11 @@ function renderProjects() {
           data-index="${index % projectList.length}"
           aria-label="View project ${escapeHTML(project.title)}"
         >
+          <span class="dashboard-item-chrome"><i></i><i></i><i></i></span>
           <img src="${escapeHTML(project.image)}" alt="${escapeHTML(project.title)}" />
           <span class="dashboard-item-overlay">
-            <strong>${escapeHTML(project.title)}</strong>
             <small>${escapeHTML(project.category)}</small>
+            <strong>${escapeHTML(project.title)}</strong>
           </span>
         </button>
       `
