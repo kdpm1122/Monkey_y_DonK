@@ -222,34 +222,26 @@ const translations = {
 const defaultProjects = [
   {
     id: 1,
-    title: 'Ecommerce Dashboard',
-    category: 'Ecommerce',
-    description: 'A panel to visualize sales, products, customers and KPIs for a digital business.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
+    title: 'El Corte — Barbería',
+    category: 'Barbería',
+    description: 'Estética oscura y dorada, servicios tipo carta y galería de trabajo real.',
+    image: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=80',
     option: 'igual'
   },
   {
     id: 2,
-    title: 'Inventory System',
-    category: 'Inventory',
-    description: 'Stock control, movements, suppliers and alerts for daily operations.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
+    title: 'Sabor Local — Restaurante',
+    category: 'Restaurante',
+    description: 'Menú con precios claros, platos reales y reservas por WhatsApp.',
+    image: 'https://images.unsplash.com/photo-1743630458593-286a8ae99625?auto=format&fit=crop&w=1000&q=80',
     option: 'igual'
   },
   {
     id: 3,
-    title: 'Commercial CRM',
-    category: 'Software',
-    description: 'Follow-up for customers, tasks and sales pipelines for business teams.',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80',
-    option: 'igual'
-  },
-  {
-    id: 4,
-    title: 'Financial Dashboard',
-    category: 'Finance',
-    description: 'Monitoring of income, expenses, collections and key business metrics.',
-    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1000&q=80',
+    title: 'Moda.Urbana — Tienda',
+    category: 'Tienda',
+    description: 'Catálogo con categorías, productos destacados y pedidos por WhatsApp.',
+    image: 'https://images.unsplash.com/photo-1633966887768-64f9a867bdba?auto=format&fit=crop&w=1000&q=80',
     option: 'igual'
   }
 ];
