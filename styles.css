@@ -122,12 +122,12 @@ button {
   height: 42px;
   padding: 0 12px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #2ad366 0%, #17b15d 100%);
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
   color: #08131d;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   font-weight: 900;
-  box-shadow: 0 12px 24px rgba(23, 177, 93, 0.22);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
   text-transform: uppercase;
   line-height: 1;
 }
@@ -326,7 +326,7 @@ button {
 .mini-chart span {
   flex: 1;
   border-radius: 10px 10px 0 0;
-  background: linear-gradient(180deg, #6f94ff, #4867ff);
+  background: linear-gradient(180deg, var(--accent), var(--primary));
   box-shadow: inset 0 -10px 16px rgba(0,0,0,0.08);
 }
 
@@ -597,7 +597,7 @@ button {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #4fd1c5 0%, #0ea5e9 100%);
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 900;
@@ -619,8 +619,8 @@ button {
 }
 
 .contact-form {
-  background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.7) 100%);
-  border: 1px solid rgba(79, 209, 197, 0.15);
+  background: linear-gradient(135deg, rgba(13, 24, 38, 0.75) 0%, rgba(11, 23, 40, 0.85) 100%);
+  border: 1px solid rgba(125, 211, 252, 0.15);
   border-radius: 24px;
   padding: 36px;
   backdrop-filter: blur(10px);
@@ -631,7 +631,7 @@ button {
   margin-top: 0;
   font-size: 1.9rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #4fd1c5, #0ea5e9);
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -651,7 +651,7 @@ button {
 .admin-panel input,
 .admin-panel textarea {
   width: 100%;
-  border: 2px solid rgba(79, 209, 197, 0.2);
+  border: 2px solid rgba(125, 211, 252, 0.2);
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   border-radius: 14px;
@@ -667,7 +667,7 @@ button {
 .contact-form textarea:hover,
 .admin-panel input:hover,
 .admin-panel textarea:hover {
-  border-color: rgba(79, 209, 197, 0.4);
+  border-color: rgba(125, 211, 252, 0.4);
   background: rgba(255, 255, 255, 0.09);
 }
 
@@ -677,9 +677,9 @@ button {
 .admin-panel input:focus,
 .admin-panel textarea:focus {
   outline: none;
-  border-color: #4fd1c5;
+  border-color: var(--accent);
   background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 0 3px rgba(79, 209, 197, 0.1);
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.18);
 }
 
 .contact-form input::placeholder,
@@ -708,8 +708,8 @@ button {
 
 .full-width {
   width: 100%;
-  background: linear-gradient(135deg, #4fd1c5 0%, #0ea5e9 100%) !important;
-  border: 2px solid #4fd1c5 !important;
+  background: linear-gradient(135deg, var(--secondary), var(--primary)) !important;
+  border: 2px solid transparent !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 1.05rem !important;
@@ -720,7 +720,7 @@ button {
 
 .full-width:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(79, 209, 197, 0.25) !important;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35) !important;
 }
 
 .full-width:active {
@@ -730,7 +730,7 @@ button {
 .form-message {
   min-height: 24px;
   margin: 16px 0 0;
-  color: #4fd1c5;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -993,7 +993,7 @@ button {
   font-weight: 800;
   background: linear-gradient(135deg, var(--secondary), var(--primary));
   -webkit-background-clip: text;
-  background-clip: text+
+  background-clip: text;
   color: transparent;
   margin: 6px 0 12px;
 }
@@ -1278,4 +1278,76 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
+}
+
+
+/* ============ SERVICIOS + PRECIOS — tarjetas mas premium ============ */
+.service-card {
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15,23,42,0.1);
+  border-color: rgba(37,99,235,0.25);
+}
+.service-card .icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  box-shadow: 0 10px 22px rgba(37,99,235,0.28);
+}
+
+/* Precios: la del medio pasa a ser la tarjeta oscura "recomendada" */
+#precios .service-card.featured {
+  background: linear-gradient(160deg, #0d1826 0%, #0b1728 100%);
+  border: 1px solid rgba(125,211,252,0.2);
+  box-shadow: 0 30px 60px rgba(2,6,23,0.35);
+}
+#precios .service-card.featured::before {
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  height: 4px;
+}
+#precios .service-card.featured h3,
+#precios .service-card.featured p {
+  color: #fff;
+}
+#precios .service-card.featured p {
+  color: #b9c6d8;
+}
+#precios .service-card.featured .price-tag {
+  background: linear-gradient(135deg, var(--accent), #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#precios .service-card.featured .icon {
+  background: rgba(125,211,252,0.14);
+  box-shadow: none;
+  border: 1px solid rgba(125,211,252,0.25);
+}
+
+
+/* ============ CTA DE DEMOS — mismo lenguaje de tarjeta premium ============ */
+.demos-cta-section .demos-cta-box {
+  position: relative;
+  overflow: hidden;
+}
+.demos-cta-section .demos-cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
 }
