@@ -1286,7 +1286,6 @@ button {
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(15,23,42,0.06);
   position: relative;
-  overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .service-card::before {
@@ -1294,6 +1293,7 @@ button {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
+  border-radius: 16px 16px 0 0;
   background: linear-gradient(90deg, var(--secondary), var(--primary));
 }
 .service-card:hover {
@@ -1350,4 +1350,117 @@ button {
   top: 0; left: 0; right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--secondary), var(--primary));
+}
+
+
+/* ============ BENTO: Servicios + Demos fusionados ============ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(190px, auto));
+  gap: 20px;
+}
+.bento-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 30px 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.bento-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(15,23,42,0.1);
+  border-color: rgba(37,99,235,0.22);
+}
+.bento-item .icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  font-size: 1.4rem;
+  box-shadow: 0 10px 22px rgba(37,99,235,0.25);
+  margin-bottom: 14px;
+}
+.bento-item h3 { margin: 0 0 8px; font-size: 1.15rem; }
+.bento-item p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.bento-item.service-wide { grid-column: span 2; grid-row: span 1; }
+.bento-item.demos-tile {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(160deg, #0d1826 0%, #0b1728 100%);
+  border: 1px solid rgba(125,211,252,0.2);
+  justify-content: flex-end;
+}
+.bento-item.demos-tile:hover { border-color: rgba(125,211,252,0.5); box-shadow: 0 25px 55px rgba(2,6,23,0.4); }
+.demos-tile .eyebrow { color: var(--accent); margin-bottom: 8px; }
+.demos-tile h3 { font-size: 1.55rem; color: #fff; }
+.demos-tile p { color: #b9c6d8; margin-bottom: 22px; }
+.demos-tile-glow {
+  position: absolute;
+  top: -25%; right: -15%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(37,99,235,0.35), transparent 70%);
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+  .bento-item.demos-tile { grid-column: span 2; min-height: 300px; }
+  .bento-item.service-wide { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-item.demos-tile, .bento-item.service-wide { grid-column: span 1; }
+}
+
+/* ============ ANIMACIONES DE ENTRADA (scroll-reveal) ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============ HERO: entrada al cargar ============ */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-copy .eyebrow { animation: heroFadeUp 0.7s cubic-bezier(0.23,1,0.32,1) both; }
+.hero-copy h1 { animation: heroFadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.08s both; }
+.hero-copy .lead { animation: heroFadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.16s both; }
+.hero-copy .cta-group { animation: heroFadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.24s both; }
+.hero-copy .trust-row { animation: heroFadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.32s both; }
+.hero-copy .hero-stats { animation: heroFadeUp 0.7s cubic-bezier(0.23,1,0.32,1) 0.4s both; }
+.hero-visual { animation: heroFadeUp 0.8s cubic-bezier(0.23,1,0.32,1) 0.3s both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy .eyebrow, .hero-copy h1, .hero-copy .lead, .hero-copy .cta-group,
+  .hero-copy .trust-row, .hero-copy .hero-stats, .hero-visual { animation: none; }
+}
+
+/* ============ BOTONES: respuesta al presionar + tiron magnetico ============ */
+.btn {
+  --mx: 0px;
+  --my: 0px;
+  transform: translate(var(--mx), var(--my));
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 200ms ease;
+}
+.btn:active {
+  transform: translate(var(--mx), var(--my)) scale(0.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
 }
