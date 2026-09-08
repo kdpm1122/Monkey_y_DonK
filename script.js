@@ -19,6 +19,7 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.cta': 'Request a quote',
     'hero.eyebrow': 'Custom web and software development',
+    'hero.badge': 'Available for new projects',
     'hero.title': 'Web pages and custom software so your business sells more.',
     'hero.lead': 'We design web pages, catalogs, online stores and custom systems for businesses that want to look professional and sell more, without complications.',
     'hero.primaryCta': 'I want a web page',
@@ -122,6 +123,7 @@ const translations = {
     'nav.contact': 'Contacto',
     'nav.cta': 'Solicitar presupuesto',
     'hero.eyebrow': 'Desarrollo web y software a medida',
+    'hero.badge': 'Disponible para nuevos proyectos',
     'hero.title': 'Páginas web y software a medida para que tu negocio venda más.',
     'hero.lead': 'Diseñamos páginas web, catálogos, tiendas online y sistemas personalizados para negocios que quieren verse profesionales y vender más, sin complicaciones.',
     'hero.primaryCta': 'Quiero una página web',
@@ -681,6 +683,21 @@ if (dashboardRail) {
     btn.addEventListener('mouseleave', function () {
       btn.style.setProperty('--mx', '0px');
       btn.style.setProperty('--my', '0px');
+    });
+  });
+})();
+
+
+// ============ Brillo del Bento que sigue el cursor ============
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll('.bento-item').forEach(function (item) {
+    item.addEventListener('mousemove', function (e) {
+      var rect = item.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      item.style.setProperty('--mx', x + '%');
+      item.style.setProperty('--my', y + '%');
     });
   });
 })();
